@@ -7,7 +7,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ modalOpen, setModalOpen, children }) => {
   return (
     <div className={`modal ${modalOpen ? "modal-open" : ""}`}>
-      <div className="modal-box relative w-11/12 h-96 max-w-5xl">
+      <div className="modal-box w-11/12 max-w-5xl">
         <label
           onClick={() => setModalOpen(false)}
           className="btn btn-sm btn-circle absolute right-2 top-2"

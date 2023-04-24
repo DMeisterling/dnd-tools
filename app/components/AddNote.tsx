@@ -4,9 +4,11 @@ import { addNote } from "@/api";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import Modal from "./Modal";
+import Tiptap from "./Tiptap";
 
 const AddNote = () => {
   const router = useRouter();
@@ -52,6 +54,7 @@ const AddNote = () => {
               placeholder="Type here"
               className="input input-bordered w-full"
             />
+            <Tiptap />
             <button type="submit" className="btn">
               Submit
             </button>

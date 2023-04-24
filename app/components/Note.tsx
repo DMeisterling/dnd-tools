@@ -5,6 +5,7 @@ import { INote } from "@/types/notes";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import Modal from "./Modal";
