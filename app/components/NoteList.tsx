@@ -13,6 +13,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes }) => {
         <thead>
           <tr>
             <th>Notes</th>
+            <th>date</th>
             <th>Actions</th>
           </tr>
         </thead>

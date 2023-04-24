@@ -2,23 +2,38 @@
   "notes": [
     {
       "id": "5dc2d79e-ba8e-43d4-b19b-dd0ce15855b4",
-      "text": "test 2222"
+      "text": "test 2222",
+      "date": "2020-01-01T00:00:00.000Z"
     },
     {
       "id": "2bcab5e7-fed2-4d98-8f88-9f576a61d3dd",
-      "text": "test 555555123af"
+      "text": "test 555555123af",
+      "date": "2020-01-18T00:00:00.000Z"
     },
     {
       "id": "9d05679e-f3e5-4a50-bfee-3dca1ad72710",
-      "text": "test 1234"
+      "text": "test 1234",
+      "date": "2020-01-22T00:00:00.000Z"
     },
     {
-      "id": "3bbff78e-e86b-4074-a930-8619bfe5fafd",
-      "text": "done"
+      "id": "4b53a826-9ec2-474a-9f2c-295a424011ea",
+      "text": "kampf im weinkeller",
+      "date": "2023-04-24T08:39:32.061Z"
     },
     {
-      "id": "e49e53cc-97e0-4c4c-ac09-7ca75fc50710",
-      "text": "afafaf"
+      "id": "f04f989c-7d88-4ae9-9f3f-ba8d52b47461",
+      "text": "kampf im weinekeller original",
+      "date": "2023-04-19T08:41:28.000Z"
+    },
+    {
+      "id": "123dc6fb-93e9-4758-ba72-1290fd7ffd79",
+      "text": "test123",
+      "date": "2023-04-19T08:41:28.000Z"
+    },
+    {
+      "id": "a12d6851-211c-45fb-b22c-c312f81c1b15",
+      "text": "1234",
+      "date": "2023-04-20T08:44:17.000Z"
     }
   ]
 }

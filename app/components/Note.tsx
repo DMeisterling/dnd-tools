@@ -4,6 +4,7 @@ import { deleteNote, editNote } from "@/api";
 import { INote } from "@/types/notes";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
+import DatePicker from "react-datepicker";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import Modal from "./Modal";
@@ -17,13 +18,21 @@ const Note: React.FC<NoteProps> = ({ note }) => {
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
   const [noteToEdit, setNoteToEdit] = useState<string>(note.text);
+  const [newDate, setNewDate] = useState(new Date());
+  const nowDate = new Date();
+  const curDate = new Date(note.date);
+  const dateString = `${curDate.getDate()}.${
+    curDate.getMonth() + 1
+  }.${curDate.getFullYear()}`;
 
   const handleSubmitEditNote: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editNote({
       id: note.id,
       text: noteToEdit,
+      date: newDate,
     });
+    setNewDate(nowDate);
     setOpenModalEdit(false);
     router.refresh();
   };
@@ -37,6 +46,7 @@ const Note: React.FC<NoteProps> = ({ note }) => {
   return (
     <tr key={note.id}>
       <td className="w-full">{note.text}</td>
+      <td>{dateString}</td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
@@ -47,6 +57,10 @@ const Note: React.FC<NoteProps> = ({ note }) => {
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditNote}>
             <h3 className="font-bold text-lg">Edit Note</h3>
+            <DatePicker
+              selected={newDate}
+              onChange={(date: Date) => setNewDate(date)}
+            />
             <div className="modal-action">
               <input
                 value={noteToEdit}
