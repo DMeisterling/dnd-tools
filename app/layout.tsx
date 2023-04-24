@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Note-Taking App",
-  description: "Small note taking app",
+  title: "DnD-Tools",
+  description: "Tools for the game 'Dungeons and Dragons'",
 };
 
 export default function RootLayout({

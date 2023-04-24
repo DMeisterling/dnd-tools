@@ -1,24 +1,24 @@
 "use client";
 
-import { addTodo } from "@/api";
+import { addNote } from "@/api";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import Modal from "./Modal";
 
-const AddTask = () => {
+const AddNote = () => {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [newTaskValue, setNewTaskValue] = useState<string>("");
+  const [newNoteValue, setNewNoteValue] = useState<string>("");
 
-  const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmitNewNote: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await addTodo({
+    await addNote({
       id: uuidv4(),
-      text: newTaskValue,
+      text: newNoteValue,
     });
-    setNewTaskValue("");
+    setNewNoteValue("");
     setModalOpen(false);
     router.refresh();
   };
@@ -29,16 +29,16 @@ const AddTask = () => {
         onClick={() => setModalOpen(true)}
         className="btn btn-primary w-full"
       >
-        Add new task <AiOutlinePlus className="ml-2" size={18} />
+        Add new Note <AiOutlinePlus className="ml-2" size={18} />
       </button>
 
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
-        <form onSubmit={handleSubmitNewTodo}>
-          <h3 className="font-bold text-lg">Add new task</h3>
+        <form onSubmit={handleSubmitNewNote}>
+          <h3 className="font-bold text-lg">Add new note</h3>
           <div className="modal-action">
             <input
-              value={newTaskValue}
-              onChange={(e) => setNewTaskValue(e.target.value)}
+              value={newNoteValue}
+              onChange={(e) => setNewNoteValue(e.target.value)}
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
@@ -53,4 +53,4 @@ const AddTask = () => {
   );
 };
 
-export default AddTask;
+export default AddNote;

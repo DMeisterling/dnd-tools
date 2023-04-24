@@ -1,42 +1,42 @@
 "use client";
 
-import { deleteTodo, editTodo } from "@/api";
-import { ITask } from "@/types/tasks";
+import { deleteNote, editNote } from "@/api";
+import { INote } from "@/types/notes";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import Modal from "./Modal";
 
-interface TaskProps {
-  task: ITask;
+interface NoteProps {
+  note: INote;
 }
 
-const Task: React.FC<TaskProps> = ({ task }) => {
+const Note: React.FC<NoteProps> = ({ note }) => {
   const router = useRouter();
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
-  const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
+  const [noteToEdit, setNoteToEdit] = useState<string>(note.text);
 
-  const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmitEditNote: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await editTodo({
-      id: task.id,
-      text: taskToEdit,
+    await editNote({
+      id: note.id,
+      text: noteToEdit,
     });
     setOpenModalEdit(false);
     router.refresh();
   };
 
-  const handleDeleteTask = async (id: string) => {
-    await deleteTodo(id);
+  const handleDeleteNote = async (id: string) => {
+    await deleteNote(id);
     setOpenModalDeleted(false);
     router.refresh();
   };
 
   return (
-    <tr key={task.id}>
-      <td className="w-full">{task.text}</td>
+    <tr key={note.id}>
+      <td className="w-full">{note.text}</td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
@@ -45,12 +45,12 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           size={25}
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
-          <form onSubmit={handleSubmitEditTodo}>
-            <h3 className="font-bold text-lg">Edit task</h3>
+          <form onSubmit={handleSubmitEditNote}>
+            <h3 className="font-bold text-lg">Edit Note</h3>
             <div className="modal-action">
               <input
-                value={taskToEdit}
-                onChange={(e) => setTaskToEdit(e.target.value)}
+                value={noteToEdit}
+                onChange={(e) => setNoteToEdit(e.target.value)}
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full"
@@ -68,9 +68,9 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           size={25}
         />
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
-          <h3>Are you sure you want to delete this task?</h3>
+          <h3>Are you sure you want to delete this note?</h3>
           <div className="modal-action">
-            <button onClick={() => handleDeleteTask(task.id)} className="btn">
+            <button onClick={() => handleDeleteNote(note.id)} className="btn">
               Yes
             </button>
           </div>
@@ -80,4 +80,4 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   );
 };
 
-export default Task;
+export default Note;

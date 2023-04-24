@@ -1,5 +1,5 @@
 {
-  "name": "note-app",
+  "name": "dnd-tools",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-server": "json-server --watch data/todos.json --port 3005"
+    "json-server": "json-server --watch data/notes.json --port 3005"
   },
   "dependencies": {
     "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
+    "@types/react": "^18.0.35",
     "@types/react-dom": "18.0.11",
     "daisyui": "^2.51.5",
     "eslint": "8.38.0",

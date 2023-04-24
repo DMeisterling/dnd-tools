@@ -1,39 +1,39 @@
-import { ITask } from "./types/tasks";
+import { INote } from "./types/notes";
 
 const baseUrl = "http://localhost:3005";
 
-export const getAllTodos = async (): Promise<ITask[]> => {
-  const res = await fetch(`${baseUrl}/tasks`, { cache: "no-cache" });
-  const todos = await res.json();
-  return todos;
+export const getAllNotes = async (): Promise<INote[]> => {
+  const res = await fetch(`${baseUrl}/notes`, { cache: "no-cache" });
+  const notes = await res.json();
+  return notes;
 };
 
-export const addTodo = async (todo: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseUrl}/tasks`, {
+export const addNote = async (todo: INote): Promise<INote> => {
+  const res = await fetch(`${baseUrl}/notes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(todo),
   });
-  const newTodo = await res.json();
-  return newTodo;
+  const newNote = await res.json();
+  return newNote;
 };
 
-export const editTodo = async (todo: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseUrl}/tasks/${todo.id}`, {
+export const editNote = async (note: INote): Promise<INote> => {
+  const res = await fetch(`${baseUrl}/notes/${note.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(todo),
+    body: JSON.stringify(note),
   });
-  const updatedTodo = await res.json();
-  return updatedTodo;
+  const updatedNote = await res.json();
+  return updatedNote;
 };
 
-export const deleteTodo = async (id: string): Promise<void> => {
-  await fetch(`${baseUrl}/tasks/${id}`, {
+export const deleteNote = async (id: string): Promise<void> => {
+  await fetch(`${baseUrl}/notes/${id}`, {
     method: "DELETE",
   });
 };

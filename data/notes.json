@@ -1,5 +1,5 @@
 {
-  "tasks": [
+  "notes": [
     {
       "id": "5dc2d79e-ba8e-43d4-b19b-dd0ce15855b4",
       "text": "test 2222"
@@ -15,6 +15,10 @@
     {
       "id": "3bbff78e-e86b-4074-a930-8619bfe5fafd",
       "text": "done"
+    },
+    {
+      "id": "e49e53cc-97e0-4c4c-ac09-7ca75fc50710",
+      "text": "afafaf"
     }
   ]
 }
